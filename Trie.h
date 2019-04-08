@@ -16,7 +16,7 @@ class Trie {
     TrieNode* root;
 public:
     Trie() {root = new TrieNode();}
-    void insert(int, const char*);
+    void insert(int, const char*, size_t);
 
 };
 

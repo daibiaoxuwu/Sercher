@@ -7,7 +7,8 @@ const int FAILURE = 1;
 
 class SimSearcher
 {
-	Trie trie;
+	Trie jacTrie, edTrie;
+	int q;
 
 public:
 	SimSearcher();

@@ -18,12 +18,24 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 	char buf[1024];
 	FILE* file = fopen(filename,"r");
 	for(int i=0;fgets(buf,1024,file);++i){
+
+		printf("insert jacc\n");
+		//jaccard: split by spaces and insert into jacTrie
 		char* pch = strtok (buf," \r\n");
-		while (pch != nullptr && strlen(pch)>1)
+		while (pch != nullptr)
 		{
-		    trie.insert(i,pch);
+		    jacTrie.insert(i,pch,strlen(pch));
 			pch = strtok (nullptr, " \r\n");
 		}
+		printf("insert ed\n");
+		//ED: insert adjacent q words into edTrie
+		this->q=q;
+		for(int j = 0; buf[j+q-1]!='\0'; ++j){
+			edTrie.insert(i, buf+j, q);
+		}
+
+
+
 	}
 	return SUCCESS;
 }

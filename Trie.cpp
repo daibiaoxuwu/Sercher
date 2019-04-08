@@ -5,9 +5,9 @@
 #include <cstdio>
 #include "Trie.h"
 
-void Trie::insert(const int num, const char *str){
+void Trie::insert(int num, const char *str, size_t len){
     TrieNode* node = root;
-    for(int i = 0; str[i] != '\0'; ++i){
+    for(int i = 0; i < len; ++i){
         TrieNode*& newNode = node->child[(int)str[i]];
         if(!newNode) {
             newNode = new TrieNode();
@@ -16,5 +16,6 @@ void Trie::insert(const int num, const char *str){
     }
     auto search = node->entries.find(num);
     node->entries.insert(num);
+    printf("insert: %s %d count:%d\n",str, num, node->entries.count(num));
 }
 
