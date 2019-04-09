@@ -8,6 +8,14 @@ const int FAILURE = 1;
 class SimSearcher
 {
 	Trie jacTrie, edTrie;
+	//count number of word in each line
+	int word_count[50000];
+
+	//hash of lines
+	unsigned long long line_hash[50000];
+
+	//count number of lines
+	int line_count;
 	int q;
 
 public:
