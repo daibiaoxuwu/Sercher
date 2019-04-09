@@ -5,7 +5,7 @@
 #include <cstdio>
 #include "Trie.h"
 
-void Trie::insert(int num, const char *str, size_t len){
+bool Trie::insert(int num, const char *str, size_t len){
     TrieNode* node = root;
     for(int i = 0; i < len; ++i){
         TrieNode*& newNode = node->child[(int)str[i]];
@@ -14,12 +14,12 @@ void Trie::insert(int num, const char *str, size_t len){
         }
         node = newNode;
     }
-    auto search = node->entries.find(num);
-    node->entries.insert(num);
-    printf("insert: %s %d count:%d\n",str, num, node->entries.count(num));
+//    auto search = node->entries.find(num);
+//    printf("insert: %s %d count:%d\n",str, num, node->entries.count(num));
+    return (node->entries.insert(num)).second;
 }
 
-std::multiset<int>* Trie::search(const char *str, size_t len) {
+std::set<int>* Trie::search(const char *str, size_t len) {
     TrieNode* node = root;
     for(int i = 0; i < len; ++i){
         TrieNode*& newNode = node->child[(int)str[i]];
