@@ -9,15 +9,17 @@ class SimSearcher
 {
 	Trie jacTrie, edTrie;
 	//count number of word in each line
-	int word_count[50000];
+	int* word_count;
+	int* char_count;
+	char** lines;
 
 	//hash of lines
-	unsigned long long line_hash[50000];
 
 	//count number of lines
 	int line_count;
 	int q;
 
+	int calculate_ED(const char *query, char* line, int threshold);
 public:
 	SimSearcher();
 	~SimSearcher();

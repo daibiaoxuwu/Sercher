@@ -16,10 +16,14 @@ bool Trie::insert(int num, const char *str, size_t len){
     }
 //    auto search = node->entries.find(num);
 //    printf("insert: %s %d count:%d\n",str, num, node->entries.count(num));
-    return (node->entries.insert(num)).second;
+
+    auto search = node->entries.find(num);
+    node->entries.insert(num);
+    return (search==node->entries.end());
+
 }
 
-std::set<int>* Trie::search(const char *str, size_t len) {
+std::multiset<int>* Trie::search(const char *str, size_t len) {
     TrieNode* node = root;
     for(int i = 0; i < len; ++i){
         TrieNode*& newNode = node->child[(int)str[i]];

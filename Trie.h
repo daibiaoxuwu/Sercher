@@ -10,14 +10,14 @@
 struct TrieNode
 {
     TrieNode* child[128];
-    std::set<int> entries;
+    std::multiset<int> entries;
 };
 class Trie {
     TrieNode* root;
 public:
     Trie() {root = new TrieNode();}
     bool insert(int, const char*, size_t);
-    std::set<int>* search(const char*, size_t);
+    std::multiset<int>* search(const char*, size_t);
 
 };
 
