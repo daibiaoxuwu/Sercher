@@ -28,12 +28,18 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 			pch = strtok (nullptr, " \r\n");
 		}
 		printf("insert ed\n");
+
 		//ED: insert adjacent q words into edTrie
 		this->q=q;
 		for(int j = 0; buf[j+q-1]!='\0'; ++j){
 			edTrie.insert(i, buf+j, q);
 		}
 
+
+//		std::multiset<int> aset = *jacTrie.search("line",4);
+//		for(int i = 0;i < 5; ++ i){
+//			printf("find:%d\n",aset.count(i));
+//		}
 
 
 	}
@@ -43,6 +49,9 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 int SimSearcher::searchJaccard(const char *query, double threshold, vector<pair<unsigned, double> > &result)
 {
 	result.clear();
+
+
+
 	return SUCCESS;
 }
 

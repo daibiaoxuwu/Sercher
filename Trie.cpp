@@ -19,3 +19,14 @@ void Trie::insert(int num, const char *str, size_t len){
     printf("insert: %s %d count:%d\n",str, num, node->entries.count(num));
 }
 
+std::multiset<int>* Trie::search(const char *str, size_t len) {
+    TrieNode* node = root;
+    for(int i = 0; i < len; ++i){
+        TrieNode*& newNode = node->child[(int)str[i]];
+        if(!newNode) {
+            return nullptr;
+        }
+        node = newNode;
+    }
+    return &(node->entries);
+}

@@ -17,6 +17,7 @@ class Trie {
 public:
     Trie() {root = new TrieNode();}
     void insert(int, const char*, size_t);
+    std::multiset<int>* search(const char*, size_t);
 
 };
 
