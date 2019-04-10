@@ -1,4 +1,3 @@
-#pragma once
 #include <vector>
 #include <utility>
 #include "Trie.h"

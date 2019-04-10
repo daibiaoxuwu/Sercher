@@ -58,7 +58,7 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 		}
 
 
-		printf("%s count:%d copied to %s\n",buf,strlen(buf),lines[line_count]);
+		//printf("%s count:%d copied to %s\n",buf,strlen(buf),lines[line_count]);
 
 		//jaccard: split by spaces and insert into jacTrie
 		char* pch = strtok (buf," \r\n");
@@ -71,6 +71,7 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 
 
 
+        /*
 		std::multiset<int> aset = *jacTrie.search("line",4);
 		for (auto it=aset.begin(); it!=aset.end(); it=aset.upper_bound(*it)){
 			printf("%d ", *it);
@@ -78,6 +79,7 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
         for(int i2 = 0;i2 < 5; ++ i2){
             printf("find:%d\n",aset.count(i2));
 		}
+        */
 
 
 	}
