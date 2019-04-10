@@ -7,11 +7,11 @@ using namespace std;
 
 SimSearcher::SimSearcher()
 {
-	word_count = new int[50000];
-	char_count = new int[50000];
-	lines = new char*[50000];
-	memset(word_count, 0, 50000*sizeof(int));
-	memset(char_count, 0, 50000*sizeof(int));
+	word_count = new int[80010];
+	char_count = new int[80010];
+	lines = new char*[80010];
+	memset(word_count, 0, 80010*sizeof(int));
+	memset(char_count, 0, 80010*sizeof(int));
 }
 
 SimSearcher::~SimSearcher()
@@ -124,8 +124,8 @@ int SimSearcher::searchJaccard(const char *query, double threshold, vector<pair<
 	//iterate through each word common in query and jacTrie
 
 	//diff of all lines
-	int* same = new int[50000];
-	memset(same, 0, 50000*sizeof(int));
+	int* same = new int[80010];
+	memset(same, 0, 80010*sizeof(int));
 	for (auto it=word_sets.begin(); it!=word_sets.end(); it=word_sets.upper_bound(*it)){
 
 		//number of this word in query:
@@ -178,8 +178,8 @@ int SimSearcher::searchED(const char *query, unsigned threshold, vector<pair<uns
 	//iterate through each word common in query and jacTrie
 
 	//diff of all lines
-	int* same=new int[50000];
-	memset(same, 0, 50000*sizeof(int));
+	int* same=new int[80010];
+	memset(same, 0, 80010*sizeof(int));
 	for (auto it=word_sets.begin(); it!=word_sets.end(); it=word_sets.upper_bound(*it)){
 
 		//number of this word in query:
