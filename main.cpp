@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	unsigned q = 2, edThreshold = 6;
 	double jaccardThreshold = 0.1;
 
-	printf("%d\n",searcher.createIndex("sample.txt", q));
+	printf("%d\n",searcher.createIndex("D:\\prog10\\Desktop\\Sercher\\sample.txt", q));
 	searcher.searchJaccard("query", jaccardThreshold, resultJaccard);
 	printf("jac\n");
 	for(auto i : resultJaccard){

@@ -44,7 +44,7 @@ int SimSearcher::createIndex(const char *filename, unsigned q)
 		if(buf[strlen(buf)-1]=='\n'){
 			buf[strlen(buf)-1]='\0';
 		}
-		printf("str:%s\n",buf);
+//		printf("str:%s\n",buf);
 		char_count[line_count] = strlen(buf);
 		lines[line_count] = new char[strlen(buf)+1];
 		memcpy(lines[line_count],buf,strlen(buf)+1);
@@ -210,7 +210,7 @@ int SimSearcher::searchED(const char *query, unsigned threshold, vector<pair<uns
 }
 
 int SimSearcher::calculate_ED(const char *query, char *line, int threshold){
-    printf("%s %s\n",query,line);
+//    printf("%s %s\n",query,line);
 	int query_len = (int)strlen(query);
 	int line_len = (int)strlen(line);
 	int data[query_len+1][line_len+1];
@@ -221,15 +221,15 @@ int SimSearcher::calculate_ED(const char *query, char *line, int threshold){
 	//endmax
 	data[query_len][line_len] = threshold + 1;
 	for(int i = 1; i <= query_len; ++ i){
-		printf("%d %d\n",left,right);
-		for(int i = 0; i <= query_len; ++ i, printf("\n"))
-			for(int j = 0; j <= line_len; ++ j)
-				printf("%d\t",data[i][j]);
+//		printf("%d %d\n",left,right);
+//		for(int i = 0; i <= query_len; ++ i, printf("\n"))
+//			for(int j = 0; j <= line_len; ++ j)
+//				printf("%d\t",data[i][j]);
 		//not found
 		if(left>right) return threshold + 1;
 
 		//left max
-		data[i][left-1] = 9;
+		data[i][left-1] = threshold + 1;
 
 		//narrow range for next round
 		bool leftflag = true;
@@ -248,12 +248,12 @@ int SimSearcher::calculate_ED(const char *query, char *line, int threshold){
 		}
 		right = next_right+1;
 		//right max
-		data[i][right] = 9;
+		data[i][right] = threshold + 1;
 
 	}
-	for(int i = 0; i <= query_len; ++ i, printf("\n"))
-		for(int j = 0; j <= line_len; ++ j)
-			printf("%d\t",data[i][j]);
+//	for(int i = 0; i <= query_len; ++ i, printf("\n"))
+//		for(int j = 0; j <= line_len; ++ j)
+//			printf("%d\t",data[i][j]);
 	return data[query_len][line_len];
 
 }
